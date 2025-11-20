@@ -13,7 +13,7 @@ public Event (String name, int time,int date){
 
   @Overriide
   publuc String toString(){
-    return "Name: "+this.name+"Date:"+this.date+"Time:"+this.time;
+    return "Name: "+this.name+"\nDate:"+this.date+"\nTime:"+this.time;
   }
 }
 }
