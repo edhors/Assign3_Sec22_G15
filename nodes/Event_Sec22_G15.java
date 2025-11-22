@@ -27,6 +27,8 @@ public class Event_Sec22_G15 implements Comparable<Event_Sec22_G15> {
         this.setEndTime(endTime);
     }
 
+    //compare events by date and time
+    //if date and time are the same, compare by name
     @Override
     public int compareTo(Event_Sec22_G15 other) {
         if (this.date.compareTo(other.date) != 0) {
@@ -40,6 +42,7 @@ public class Event_Sec22_G15 implements Comparable<Event_Sec22_G15> {
         return this.name.compareTo(other.name);
     }
 
+    //validate date
     public void validateDate(String date) throws InvalidDateFormat_Sec22_G15, InvalidYear_Sec22_G15, InvalidMonth_Sec22_G15, InvalidDay_Sec22_G15 {
         //check format first
         if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
@@ -59,6 +62,7 @@ public class Event_Sec22_G15 implements Comparable<Event_Sec22_G15> {
         if (day < 1 || day > 31) throw new InvalidDay_Sec22_G15(day);
     }
 
+    //validate time
     public void validateTime(String time) throws InvalidTimeFormat_Sec22_G15, InvalidTime_Sec22_G15 {
         if (!time.matches("\\d{2}:\\d{2}")) {
             throw new InvalidTimeFormat_Sec22_G15(time);
