@@ -1,6 +1,5 @@
 import trees.SawwahTree_Sec22_G15;
 
-import java.util.Iterator;
 import java.util.Scanner;
 import nodes.Event_Sec22_G15;
 import java.util.ArrayList;
