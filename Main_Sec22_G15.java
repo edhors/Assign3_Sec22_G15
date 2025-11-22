@@ -106,7 +106,7 @@ public class Main_Sec22_G15 {
                 //find the event to update
                 Event_Sec22_G15 eventToUpdate = null;
                 for (Event_Sec22_G15 event : sawwahTree) {
-                    if (event.getName().equals(nameToFind) && 
+                    if (event.getName().toLowerCase().equals(nameToFind.toLowerCase()) && 
                         event.getDate().equals(dateToFind) && 
                         event.getStartTime().equals(startTimeToFind)) {
                         eventToUpdate = event;
@@ -174,7 +174,7 @@ public class Main_Sec22_G15 {
                 //find the event to delete
                 Event_Sec22_G15 eventToDelete = null;
                 for (Event_Sec22_G15 event : sawwahTree) {
-                    if (event.getName().equals(nameToFind) && 
+                    if (event.getName().toLowerCase().equals(nameToFind.toLowerCase()) && 
                         event.getDate().equals(dateToFind) && 
                         event.getStartTime().equals(startTimeToFind)) {
                         eventToDelete = event;
