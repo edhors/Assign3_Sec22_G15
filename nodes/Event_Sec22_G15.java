@@ -1,4 +1,12 @@
 package nodes;
+
+import exceptions.InvalidDateFormat_Sec22_G15;
+import exceptions.InvalidYear_Sec22_G15;
+import exceptions.InvalidMonth_Sec22_G15;
+import exceptions.InvalidDay_Sec22_G15;
+import exceptions.InvalidTimeFormat_Sec22_G15;
+import exceptions.InvalidTime_Sec22_G15;
+
 public class Event_Sec22_G15 implements Comparable<Event_Sec22_G15> {
     private String name;
     private String category;
@@ -13,9 +21,10 @@ public class Event_Sec22_G15 implements Comparable<Event_Sec22_G15> {
         this.category = category;
         this.location = location;
         this.region = region;
-        this.date = date;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        
+        this.setDate(date);
+        this.setStartTime(startTime);
+        this.setEndTime(endTime);
     }
 
     @Override
@@ -31,6 +40,34 @@ public class Event_Sec22_G15 implements Comparable<Event_Sec22_G15> {
         return this.name.compareTo(other.name);
     }
 
+    public void validateDate(String date) throws InvalidDateFormat_Sec22_G15, InvalidYear_Sec22_G15, InvalidMonth_Sec22_G15, InvalidDay_Sec22_G15 {
+        //check format first
+        if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
+            throw new InvalidDateFormat_Sec22_G15(date);
+        }
+        int year = Integer.parseInt(date.substring(0, 4));
+        if (year < -1) throw new InvalidYear_Sec22_G15(year);
+
+        //extract and validate month (positions 5-6 in "YYYY-MM-DD")
+        String monthStr = date.substring(5, 7);
+        int month = Integer.parseInt(monthStr);
+        if (month < 1 || month > 12) throw new InvalidMonth_Sec22_G15(month);
+        
+        //extract and validate day (positions 8-9 in "YYYY-MM-DD")
+        String dayStr = date.substring(8, 10);
+        int day = Integer.parseInt(dayStr);
+        if (day < 1 || day > 31) throw new InvalidDay_Sec22_G15(day);
+    }
+
+    public void validateTime(String time) throws InvalidTimeFormat_Sec22_G15, InvalidTime_Sec22_G15 {
+        if (!time.matches("\\d{2}:\\d{2}")) {
+            throw new InvalidTimeFormat_Sec22_G15(time);
+        }
+        int hour = Integer.parseInt(time.substring(0, 2));
+        if (hour < 0 || hour > 23) throw new InvalidTime_Sec22_G15(time);
+        int minute = Integer.parseInt(time.substring(3, 5));
+        if (minute < 0 || minute > 59) throw new InvalidTime_Sec22_G15(time);
+    }
 
     public String getName() {
         return name;
@@ -68,7 +105,13 @@ public class Event_Sec22_G15 implements Comparable<Event_Sec22_G15> {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date)  {
+        try {
+            validateDate(date);
+        } catch (InvalidDateFormat_Sec22_G15 | InvalidYear_Sec22_G15 | InvalidMonth_Sec22_G15 | InvalidDay_Sec22_G15 e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         this.date = date;
     }
 
@@ -77,6 +120,12 @@ public class Event_Sec22_G15 implements Comparable<Event_Sec22_G15> {
     }
 
     public void setStartTime(String startTime) {
+        try {
+            validateTime(startTime);
+        } catch (InvalidTimeFormat_Sec22_G15 | InvalidTime_Sec22_G15 e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         this.startTime = startTime;
     }
 
@@ -85,6 +134,12 @@ public class Event_Sec22_G15 implements Comparable<Event_Sec22_G15> {
     }
 
     public void setEndTime(String endTime) {
+        try {
+            validateTime(endTime);
+        } catch (InvalidTimeFormat_Sec22_G15 | InvalidTime_Sec22_G15 e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         this.endTime = endTime;
     }
 
