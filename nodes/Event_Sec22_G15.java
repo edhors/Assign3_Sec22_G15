@@ -148,6 +148,6 @@ public class Event_Sec22_G15 implements Comparable<Event_Sec22_G15> {
     }
 
     public String toString() {
-        return "Event: " + name + " (" + category + ") in " + location + " [" + region + "] on " + date + " at " + startTime + " - " + endTime;
+        return "Event: " + date + " at " + startTime + " - " + endTime + " | " + name + " (" + category + ") in " + location + " [" + region + "]";
     }
 }
