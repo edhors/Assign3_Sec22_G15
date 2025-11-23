@@ -13,8 +13,8 @@ public class TestClass{
         
         //updating 
         Event_Sec22_G15 Event = tree.iterator().next();
-        Event_Sec22_G15 updatedEvent = new Event_Sec22_G15(  Event.getName() + " Updated event name", Event.getCategory(),Event.getLocation(), Event.getRegion(),   Event.getDate(),  Event.getStartTime(),   Event.getEndTime());
-        boolean Result = tree.update(updatedEvent);
+        Event_Sec22_G15 updateEvent = new Event_Sec22_G15(  Event.getName() + " Updated event name", Event.getCategory(),Event.getLocation(), Event.getRegion(),   Event.getDate(),  Event.getStartTime(),   Event.getEndTime());
+        boolean Result = tree.update(updateEvent);
       
         System.out.println("Total Number of events: " + tree.size() +"\nresult of updating: "+ Result);
         tree.printInChronologicalOrder();
