@@ -6,7 +6,7 @@ public class TestClass{
         SawwahTree_Sec22_G15 tree = new SawwahTree_Sec22_G15();
         //test large amount
         for (int i = 1; i <= 1000; i++) {
-            Event_Sec22_G15 event = new Event_Sec22_G15("Event00" + i,"Category","Location","Region","2025-11-23", "11:00","13:00" );
+            Event_Sec22_G15 event = new Event_Sec22_G15("Event" + i,"Category","Location","Region","2025-11-23", "11:00","13:00" );
             tree.add(event);
         }
 
