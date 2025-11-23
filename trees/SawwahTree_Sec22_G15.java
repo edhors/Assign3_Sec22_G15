@@ -26,14 +26,13 @@ public class SawwahTree_Sec22_G15 extends TreeSet<Event_Sec22_G15> {
     }
 
     //update event in the tree
-    public boolean update(Event_Sec22_G15 event) {
+     public boolean update(Event_Sec22_G15 event) {
         if (contains(event)) {
-            remove(event);
-            add(event);
-            return true;
-        }
-        return false;
+        remove(event);
     }
+      add(event);
+      return true; 
+}
 
     //filter events by category, region, and date
     public ArrayList<Event_Sec22_G15> filter(String category, String region, String date) {
