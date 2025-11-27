@@ -42,25 +42,25 @@ public class TestManyEvents_Sec22_G15{
     }
 
     public static String[] randomTimeRange() {
-    Random rand = new Random();
+        Random rand = new Random();
 
-    int hour = rand.nextInt(22);    // 0–21 inclusive
-    int minute = rand.nextInt(60);  // 0–59
+        int hour = rand.nextInt(22);    // 0–21 inclusive
+        int minute = rand.nextInt(60);  // 0–59
 
-    int startHour = hour;
-    int startMinute = minute;
+        int startHour = hour;
+        int startMinute = minute;
 
-    int endHour = startHour;
-    int endMinute = startMinute + 30;
+        int endHour = startHour;
+        int endMinute = startMinute + 30;
 
-    if (endMinute >= 60) {
-        endMinute -= 60;
-        endHour += 1;
+        if (endMinute >= 60) {
+            endMinute -= 60;
+            endHour += 1;
+        }
+
+        String start = String.format("%02d:%02d", startHour, startMinute);
+        String end   = String.format("%02d:%02d", endHour, endMinute);
+
+        return new String[] { start, end };
     }
-
-    String start = String.format("%02d:%02d", startHour, startMinute);
-    String end   = String.format("%02d:%02d", endHour, endMinute);
-
-    return new String[] { start, end };
-}
 }
